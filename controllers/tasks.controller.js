@@ -1,10 +1,23 @@
+import Task from "../models/task.model.js";
+
 export const taskGet = (req, res)=>{
     res.send("Reading...")
 };
 
-export const taskCreate = (req, res)=>{
-    console.log('Create new task');
-    res.send("Creating...");
+export const taskCreate = async (req, res)=>{
+    const newTask = new Task({
+        task_name: req.body.task_name
+    })
+    try {
+        const task = await newTask.save();
+        return res.status(201).json(task);
+    } catch (error) {
+        res.status(400).json({
+            message: error.message
+        });
+    }
+    return res.json(newTask);
+    
 };
 
 export const taskUpdate = (req, res)=>{
