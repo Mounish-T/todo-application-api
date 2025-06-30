@@ -1,4 +1,5 @@
-const express = require('express');
+import express from 'express';
+import tasksRoutes from './routes/tasks.routes.js';
 
 const app = express();
 const PORT = 1000; // Set the Port where the Server is Listening at
@@ -13,27 +14,4 @@ app.get('/', (req, res)=>{
 })
 
 // Making CRUD operations
-
-// R - Read Tasks
-app.get('/tasks', (req, res)=>{
-    console.log('Get all available tasks');
-    res.send("Reading...");
-});
-
-// C - Create Tasks
-app.post('/tasks', (req, res)=>{
-    console.log('Create new task');
-    res.send("Creating...");
-});
-
-// U - Update Tasks
-app.put('/tasks', (req, res)=>{
-    console.log('Update the existing task');
-    res.send("Updating...");
-});
-
-// D - Delete Tasks
-app.delete('/tasks', (req, res)=>{
-    console.log('Delete the existing task');
-    res.send("Deleting...");
-});
+app.use('/tasks', tasksRoutes);  // Middlewares 
