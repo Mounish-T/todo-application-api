@@ -19,7 +19,13 @@ app.listen(PORT, ()=>{
 
 // Initial Route
 app.get('/', (req, res)=>{
-    res.send("This is the Initial route of the Server");
+    try {
+        res.status(200).send("This is the Initial route of the Server");
+    } catch (error) {
+        res.status(404).json({
+            message: "Server is not connected"
+        });
+    }
 })
 
 // Making CRUD operations
