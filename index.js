@@ -1,10 +1,12 @@
 import express from 'express';
+import cors from 'cors';
 import tasksRoutes from './routes/tasks.routes.js';
 import connectDB from './lib/db.js';
 
 const app = express();
 const PORT = 1000; // Set the Port where the Server is Listening at
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 

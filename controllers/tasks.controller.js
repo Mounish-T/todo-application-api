@@ -26,7 +26,7 @@ export const taskCreate = async (req, res)=>{
         const task = await newTask.save();
         return res.status(201).json(task);
     } catch (error) {
-        res.status(400).json({
+        res.status(409).json({
             message: error.message
         });
     }
@@ -61,9 +61,9 @@ export const taskUpdate = async (req, res)=>{
         }
 
     } catch (error) {
-        res.status(500).json({
-            message: error.message
-        })
+        res.status(409).json({
+            message: "Task already added"
+        });
     }
 };
 
