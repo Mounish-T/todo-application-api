@@ -5,7 +5,7 @@ const router = express.Router();
 // Making CRUD operations
 
 // R - Read Tasks
-    router.get('/tasks', (req, res)=>{
+    router.get('/', (req, res)=>{
         console.log('Get all available tasks');
     res.send("Reading...");
 });
