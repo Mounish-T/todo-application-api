@@ -1,7 +1,14 @@
 import Task from "../models/task.model.js";
 
-export const taskGet = (req, res)=>{
-    res.send("Reading...")
+export const taskGet = async (req, res)=>{
+    try {
+        const allTasks = await Task.find();
+        res.status(200).json(allTasks);
+    } catch (error) {
+        res.status(500).json({
+            message: error.message
+        });
+    }
 };
 
 export const taskCreate = async (req, res)=>{
@@ -20,9 +27,31 @@ export const taskCreate = async (req, res)=>{
     
 };
 
-export const taskUpdate = (req, res)=>{
-    console.log('Update the existing task');
-    res.send("Updating...");
+export const taskUpdate = async (req, res)=>{
+    try {
+        const updatedTask = await Task.findOneAndUpdate(
+            // From Record
+            {
+                _id: req.params.id
+            },
+            // To Record
+            {
+                task_name: req.body.task_name
+            },
+            // Set Options => [if new = true or returnDocumet = 'after' -> return the updated document]. 
+            //                [if upsert = true -> no document matches, it will insert ]
+            {
+                // returnDocument: 'after' => if it set 'before' it will return old document
+                new: true,
+            }
+        );
+        res.status(200).json(updatedTask);
+
+    } catch (error) {
+        res.status(500).json({
+            message: error.message
+        })
+    }
 };
 
 export const taskDelete = (req, res)=>{
