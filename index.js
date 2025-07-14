@@ -5,6 +5,7 @@ import connectDB from './lib/db.js';
 
 const app = express();
 const PORT = 1000; // Set the Port where the Server is Listening at
+const customIp = '192.168.50.85'; // Set the custom Ip address to run the server
 
 app.use(cors());
 app.use(express.json());
@@ -13,8 +14,8 @@ app.use(express.urlencoded({extended: true}));
 // Connect the database
 connectDB();
 
-app.listen(PORT, ()=>{
-    console.log(`The Server is running at http://127.0.0.1:${PORT}`);
+app.listen(PORT, customIp, ()=>{
+    console.log(`The Server is running at http://${customIp}:${PORT}`);
 })
 
 // Initial Route
