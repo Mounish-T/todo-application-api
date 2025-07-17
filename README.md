@@ -31,7 +31,7 @@ todo-application-api/
 │   └── tasks.js
 │
 ├── .env                 # Environment variables
-├── server.js            # Entry point
+├── index.js            # Entry point
 ├── package.json
 └── README.md
 ```
