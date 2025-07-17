@@ -73,8 +73,9 @@ The server will start on `http://localhost:1000` (or your configured port).
 
 ## 🌐 Frontend
 
-You can integrate this API with any frontend.  
-Here’s the my frontend repo:  
+You can integrate this API with website and app.  
+Here’s the my web and app repo: 
+https://github.com/Mounish-T/ToDo-website
 https://github.com/Mounish-T/ToDo-application
 
 ## 📬 Contact
